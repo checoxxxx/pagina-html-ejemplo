@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>AiZentek - Suite Completa de IA: Chat, Documentos y Voz</title>
-    <meta name="description" content="Suite completa de IA empresarial: SmartLeads para WhatsApp/Instagram, Agentes Inteligentes para automatización de documentos, y Agentes de Voz para llamadas outbound/inbound.">
+    <meta content="Suite completa de IA empresarial: SmartLeads para WhatsApp/Instagram, Agentes Inteligentes para automatización de documentos, y Agentes de Voz para llamadas outbound/inbound." name="description"/>
     
     <!-- Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/7a3e149b/css/all.min.css" rel="stylesheet"/>
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?573c9ad5" rel="stylesheet"/>
     
     <style>
         * {
@@ -34,12 +34,224 @@
         .hover-scale {
             transition: transform 0.3s ease;
         }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #5a67d8 0%, #68588b 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            border: 2px solid #667eea;
+            color: #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #667eea;
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-counter {
+            animation: countUp 2s ease-out;
+        }
+        
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Estilos para FAQ */
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-content.active {
+            max-height: 300px;
+        }
+        
+        /* Service Icons */
+        .service-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Optimización para PDF */
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; }
+            .bg-gray-900, .bg-gray-800 { background: white !important; color: black !important; }
+            .text-white { color: black !important; }
+        }
+        .product-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+        .product-card:hover {
+            border: 2px solid #667eea;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .feature-highlight {
+            background: linear-gradient(90deg, #f0f9ff 0%, #e0e7ff 100%);
+            border-left: 4px solid #667eea;
+        }
     </style>
 </head>
 <body>
-    <img src="image01.png" alt="Aizentek AI Platform">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white shadow-lg z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold gradient-text">AiZentek</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a class="text-gray-700 hover:text-purple-600 font-medium transition-colors" href="#home">Inicio</a>
+                    <a class="text-gray-700 hover:text-purple-600 font-medium transition-colors" href="#productos">Productos</a>
+                    <a class="text-gray-700 hover:text-purple-600 font-medium transition-colors" href="#ejemplos">Ejemplos</a>
+                    <a class="text-gray-700 hover:text-purple-600 font-medium transition-colors" href="#industrias">Industrias</a>
+                    <a class="text-gray-700 hover:text-purple-600 font-medium transition-colors" href="#testimonios">Testimonios</a>
+                    <a class="text-gray-700 hover:text-purple-600 font-medium transition-colors" href="#faq">FAQ</a>
+                    <a class="text-gray-700 hover:text-purple-600 font-medium transition-colors" href="#contacto">Contacto</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a class="btn-primary text-white px-6 py-2 rounded-full font-semibold" href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank">
+                        Consulta Gratuita
+                    </a>
+                    <button class="md:hidden text-gray-600" id="mobile-menu-btn">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
+                    <a class="block px-3 py-2 text-gray-700 hover:text-purple-600" href="#home">Inicio</a>
+                    <a class="block px-3 py-2 text-gray-700 hover:text-purple-600" href="#productos">Productos</a>
+                    <a class="block px-3 py-2 text-gray-700 hover:text-purple-600" href="#ejemplos">Ejemplos</a>
+                    <a class="block px-3 py-2 text-gray-700 hover:text-purple-600" href="#industrias">Industrias</a>
+                    <a class="block px-3 py-2 text-gray-700 hover:text-purple-600" href="#testimonios">Testimonios</a>
+                    <a class="block px-3 py-2 text-gray-700 hover:text-purple-600" href="#faq">FAQ</a>
+                    <a class="block px-3 py-2 text-gray-700 hover:text-purple-600" href="#contacto">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-20 bg-gray-900 text-white" id="home">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-fade-in">
+                    <h1 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Suite Completa de <span class="gradient-text">IA Empresarial</span>
+                    </h1>
+                    <p class="text-xl mb-4 text-gray-300 leading-relaxed">
+                        Chat Inteligente: WhatsApp, Instagram y Messenger<br>
+                        Agentes Documentales: Revisa, resume y gestiona documentos<br>
+                        Agentes de Voz: Llamadas outbound e inbound automatizadas
+                    </p>
+                    <p class="text-lg mb-8 text-gray-400">
+                        Transforma completamente tu operación con IA que trabaja 24/7
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center justify-center" href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank">
+                            <i class="fas fa-rocket mr-2"></i>
+                            Implementar Ahora
+                        </a>
+                        <a class="btn-secondary px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center justify-center" href="#productos">
+                            <i class="fas fa-play mr-2"></i>
+                            Ver Productos
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="animate-fade-in">
+                    <div class="relative">
+                        <img alt="AiZentek AI Platform" class="w-full rounded-2xl shadow-2xl"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-purple-900/20 to-transparent rounded-2xl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div class="animate-counter">
+                        <div class="text-4xl font-bold gradient-text" data-target="95">0</div>
+                        <div class="text-gray-400 mt-2">% Conversión</div>
+                    </div>
+                    <div class="animate-counter">
+                        <div class="text-4xl font-bold gradient-text" data-target="24">0</div>
+                        <div class="text-gray-400 mt-2">Horas Disponible</div>
+                    </div>
+                    <div class="animate-counter">
+                        <div class="text-4xl font-bold gradient-text" data-target="1000">0</div>
+                        <div class="text-gray-400 mt-2">+ Documentos/Día</div>
+                    </div>
+                    <div class="animate-counter">
+                        <div class="text-4xl font-bold gradient-text" data-target="500">0</div>
+                        <div class="text-gray-400 mt-2">+ Llamadas/Día</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rest of the HTML content continues... -->
     
-    <h1>AiZentek - Suite Completa de IA</h1>
-    <!-- Resto del contenido del HTML -->
 </body>
 </html>
