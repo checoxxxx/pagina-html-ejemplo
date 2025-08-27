@@ -14,7 +14,7 @@
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+    
     <style>
         * {
             font-family: 'Inter', sans-serif;
@@ -1086,46 +1086,7 @@
                 icon.style.animationDuration = '3s';
             });
         });
-   <!-- 1) Parche: forzar todos los shadow roots a 'open' y ocultar solo el branding -->
-<script>
-(function () {
-  // --- utilidades ---
-  function hideBrandingIn(root) {
-    try {
-      // Busca el enlace oficial del crédito
-      root.querySelectorAll('a[href="https://elevenlabs.io/conversational-ai"]').forEach(a => {
-        const p = a.closest('p');
-        if (p) p.style.setProperty('display','none','important');
-      });
-      // Por si cambian el markup: detectar el texto
-      root.querySelectorAll('p').forEach(p => {
-        const t = (p.textContent || '').trim();
-        if (t.includes('Powered by ElevenLabs')) {
-          p.style.setProperty('display','none','important');
-        }
-      });
-    } catch (e) {}
-  }
-  function observeRoot(root) {
-    hideBrandingIn(root);
-    const mo = new MutationObserver(() => hideBrandingIn(root));
-    mo.observe(root, { childList: true, subtree: true });
-  }
-  // --- parche de attachShadow: convertir 'closed' en 'open' ---
-  const _attach = Element.prototype.attachShadow;
-  if (_attach) {
-    Element.prototype.attachShadow = function(init) {
-      const patched = Object.assign({}, init || {}, { mode: 'open' });
-      const shadow = _attach.call(this, patched);
-      observeRoot(shadow);
-      return shadow;
-    };
-  }
-  // observar también el documento principal
-  observeRoot(document);
-})();
-</script>
-<elevenlabs-convai agent-id="agent_7901k3m3eh0sf5eaypvzvpa9zpjn"></elevenlabs-convai>
-<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+    </script>
+    <elevenlabs-convai agent-id="agent_7901k3m3eh0sf5eaypvzvpa9zpjn"></elevenlabs-convai><script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 </body>
 </html>
