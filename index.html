@@ -1,1101 +1,1128 @@
-   1	<!DOCTYPE html>
-     2	<html lang="es">
-     3	<head>
-     4	    <meta charset="UTF-8">
-     5	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     6	    <title>AiZentek - Suite Completa de IA: Chat, Documentos y Voz</title>
-     7	    <meta name="description" content="Suite completa de IA empresarial: SmartLeads para Instagram y redes sociales, Agentes Inteligentes para automatización de documentos, y Agentes de Voz para llamadas outbound/inbound.">
-     8	    
-     9	    <!-- Tailwind CSS -->
-    10	    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    11	    
-    12	    <!-- Font Awesome -->
-    13	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    14	    
-    15	    <!-- Google Fonts -->
-    16	    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    17	    
-    18	    <style>
-    19	        * {
-    20	            font-family: 'Inter', sans-serif;
-    21	        }
-    22	        
-    23	        .gradient-bg {
-    24	            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    25	        }
-    26	        
-    27	        .gradient-text {
-    28	            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    29	            -webkit-background-clip: text;
-    30	            -webkit-text-fill-color: transparent;
-    31	            background-clip: text;
-    32	        }
-    33	        
-    34	        .hover-scale {
-    35	            transition: transform 0.3s ease;
-    36	        }
-    37	        
-    38	        .hover-scale:hover {
-    39	            transform: scale(1.05);
-    40	        }
-    41	        
-    42	        .btn-primary {
-    43	            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    44	            transition: all 0.3s ease;
-    45	        }
-    46	        
-    47	        .btn-primary:hover {
-    48	            background: linear-gradient(135deg, #5a67d8 0%, #68588b 100%);
-    49	            transform: translateY(-2px);
-    50	            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
-    51	        }
-    52	        
-    53	        .btn-secondary {
-    54	            border: 2px solid #667eea;
-    55	            color: #667eea;
-    56	            transition: all 0.3s ease;
-    57	        }
-    58	        
-    59	        .btn-secondary:hover {
-    60	            background: #667eea;
-    61	            color: white;
-    62	            transform: translateY(-2px);
-    63	        }
-    64	        
-    65	        .card-hover {
-    66	            transition: all 0.3s ease;
-    67	            border: 1px solid #e2e8f0;
-    68	        }
-    69	        
-    70	        .card-hover:hover {
-    71	            transform: translateY(-5px);
-    72	            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    73	            border-color: #667eea;
-    74	        }
-    75	        
-    76	        .smooth-scroll {
-    77	            scroll-behavior: smooth;
-    78	        }
-    79	        
-    80	        .animate-fade-in {
-    81	            animation: fadeIn 0.6s ease-in;
-    82	        }
-    83	        
-    84	        @keyframes fadeIn {
-    85	            from { opacity: 0; transform: translateY(20px); }
-    86	            to { opacity: 1; transform: translateY(0); }
-    87	        }
-    88	        
-    89	        .animate-counter {
-    90	            animation: countUp 2s ease-out;
-    91	        }
-    92	        
-    93	        @keyframes countUp {
-    94	            from { opacity: 0; transform: scale(0.5); }
-    95	            to { opacity: 1; transform: scale(1); }
-    96	        }
-    97	        
-    98	        /* Estilos para FAQ */
-    99	        .faq-item {
-   100	            border-bottom: 1px solid #e2e8f0;
-   101	        }
-   102	        
-   103	        .faq-content {
-   104	            max-height: 0;
-   105	            overflow: hidden;
-   106	            transition: max-height 0.3s ease;
-   107	        }
-   108	        
-   109	        .faq-content.active {
-   110	            max-height: 300px;
-   111	        }
-   112	        
-   113	        /* Service Icons */
-   114	        .service-icon {
-   115	            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-   116	            background-size: 200% 200%;
-   117	            animation: gradientShift 3s ease infinite;
-   118	        }
-   119	        
-   120	        @keyframes gradientShift {
-   121	            0% { background-position: 0% 50%; }
-   122	            50% { background-position: 100% 50%; }
-   123	            100% { background-position: 0% 50%; }
-   124	        }
-   125	        
-   126	        /* Optimización para PDF */
-   127	        @media print {
-   128	            .no-print { display: none !important; }
-   129	            body { background: white !important; }
-   130	            .bg-gray-900, .bg-gray-800 { background: white !important; color: black !important; }
-   131	            .text-white { color: black !important; }
-   132	        }
-   133	
-   134	        .product-card {
-   135	            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-   136	            border: 2px solid transparent;
-   137	            background-clip: padding-box;
-   138	        }
-   139	
-   140	        .product-card:hover {
-   141	            border: 2px solid #667eea;
-   142	            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-   143	        }
-   144	
-   145	        .feature-highlight {
-   146	            background: linear-gradient(90deg, #f0f9ff 0%, #e0e7ff 100%);
-   147	            border-left: 4px solid #667eea;
-   148	        }
-   149	
-   150	        /* Estilos específicos para el calendario */
-   151	        .calendar-container {
-   152	            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-   153	            border: 2px solid #e2e8f0;
-   154	            transition: all 0.3s ease;
-   155	        }
-   156	
-   157	        .calendar-container:hover {
-   158	            border-color: #667eea;
-   159	            box-shadow: 0 25px 50px -12px rgba(102, 126, 234, 0.15);
-   160	        }
-   161	
-   162	        .calendar-iframe {
-   163	            border: none;
-   164	            border-radius: 12px;
-   165	            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-   166	        }
-   167	    </style>
-   168	</head>
-   169	<body class="smooth-scroll bg-white">
-   170	    
-   171	    <!-- Navigation -->
-   172	    <nav class="fixed top-0 w-full bg-white shadow-lg z-50 transition-all duration-300" id="navbar">
-   173	        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-   174	            <div class="flex justify-between items-center py-4">
-   175	                <div class="flex items-center">
-   176	                    <span class="text-2xl font-bold gradient-text">AiZentek</span>
-   177	                </div>
-   178	                
-   179	                <div class="hidden md:flex items-center space-x-8">
-   180	                    <a href="#home" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Inicio</a>
-   181	                    <a href="#productos" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Productos</a>
-   182	                    <a href="#ejemplos" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Ejemplos</a>
-   183	                    <a href="#industrias" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Industrias</a>
-   184	                    <a href="#testimonios" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Testimonios</a>
-   185	                    <a href="#faq" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">FAQ</a>
-   186	                    <a href="#contacto" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Contacto</a>
-   187	                </div>
-   188	                
-   189	                <div class="flex items-center space-x-4">
-   190	                    <a href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank" class="btn-primary text-white px-6 py-2 rounded-full font-semibold">
-   191	                        Consulta Gratuita
-   192	                    </a>
-   193	                    <button class="md:hidden text-gray-600" id="mobile-menu-btn">
-   194	                        <i class="fas fa-bars text-xl"></i>
-   195	                    </button>
-   196	                </div>
-   197	            </div>
-   198	            
-   199	            <!-- Mobile Menu -->
-   200	            <div class="md:hidden hidden" id="mobile-menu">
-   201	                <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
-   202	                    <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Inicio</a>
-   203	                    <a href="#productos" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Productos</a>
-   204	                    <a href="#ejemplos" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Ejemplos</a>
-   205	                    <a href="#industrias" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Industrias</a>
-   206	                    <a href="#testimonios" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Testimonios</a>
-   207	                    <a href="#faq" class="block px-3 py-2 text-gray-700 hover:text-purple-600">FAQ</a>
-   208	                    <a href="#contacto" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Contacto</a>
-   209	                </div>
-   210	            </div>
-   211	        </div>
-   212	    </nav>
-   213	
-   214	    <!-- Hero Section -->
-   215	    <section id="home" class="pt-20 bg-gray-900 text-white">
-   216	        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-   217	            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-   218	                <div class="animate-fade-in">
-   219	                    <h1 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-   220	                        Suite Completa de <span class="gradient-text">IA Empresarial</span>
-   221	                    </h1>
-   222	                    <p class="text-xl mb-4 text-gray-300 leading-relaxed">
-   223	                        <strong>Chat Inteligente:</strong> Instagram y redes sociales<br>
-   224	                        <strong>Agentes Documentales:</strong> Revisa, resume y gestiona documentos<br>
-   225	                        <strong>Agentes de Voz:</strong> Llamadas outbound e inbound automatizadas
-   226	                    </p>
-   227	                    <p class="text-lg mb-8 text-gray-400">
-   228	                        Transforma completamente tu operación con IA que trabaja 24/7
-   229	                    </p>
-   230	                    <div class="flex flex-col sm:flex-row gap-4">
-   231	                        <a href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center justify-center">
-   232	                            <i class="fas fa-rocket mr-2"></i>
-   233	                            Implementar Ahora
-   234	                        </a>
-   235	                        <a href="#productos" class="btn-secondary px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center justify-center">
-   236	                            <i class="fas fa-play mr-2"></i>
-   237	                            Ver Productos
-   238	                        </a>
-   239	                    </div>
-   240	                </div>
-   241	                
-   242	                <div class="animate-fade-in">
-   243	                    <div class="relative">
-   244	                        <img src="AiZentek AI Platform.png" alt="AiZentek AI Platform" class="w-full rounded-2xl shadow-2xl">
-   245	
-   246	                        <div class="absolute inset-0 bg-gradient-to-t from-purple-900/20 to-transparent rounded-2xl"></div>
-   247	                    </div>
-   248	                </div>
-   249	            </div>
-   250	        </div>
-   251	        
-   252	        <!-- Stats Section -->
-   253	        <div class="border-t border-gray-800">
-   254	            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-   255	                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-   256	                    <div class="animate-counter">
-   257	                        <div class="text-4xl font-bold gradient-text" data-target="95">0</div>
-   258	                        <div class="text-gray-400 mt-2">% Conversión</div>
-   259	                    </div>
-   260	                    <div class="animate-counter">
-   261	                        <div class="text-4xl font-bold gradient-text" data-target="24">0</div>
-   262	                        <div class="text-gray-400 mt-2">Horas Disponible</div>
-   263	                    </div>
-   264	                    <div class="animate-counter">
-   265	                        <div class="text-4xl font-bold gradient-text" data-target="1000">0</div>
-   266	                        <div class="text-gray-400 mt-2">+ Documentos/Día</div>
-   267	                    </div>
-   268	                    <div class="animate-counter">
-   269	                        <div class="text-4xl font-bold gradient-text" data-target="500">0</div>
-   270	                        <div class="text-gray-400 mt-2">+ Llamadas/Día</div>
-   271	                    </div>
-   272	                </div>
-   273	            </div>
-   274	        </div>
-   275	    </section>
-   276	
-   277	    <!-- Productos Principales -->
-   278	    <section id="productos" class="py-20 bg-white">
-   279	        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-   280	            <div class="text-center mb-16">
-   281	                <h2 class="text-4xl font-bold mb-4">Nuestros <span class="gradient-text">3 Productos Principales</span></h2>
-   282	                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Suite completa de IA que automatiza completamente tu operación: desde leads hasta documentos y llamadas</p>
-   283	            </div>
-   284	            
-   285	            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-   286	                <!-- SmartLeads -->
-   287	                <div class="product-card rounded-2xl p-8 text-center hover-scale">
-   288	                    <div class="service-icon w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-   289	                        <i class="fas fa-comments text-white text-3xl"></i>
-   290	                    </div>
-   291	                    <h3 class="text-2xl font-bold mb-4 gradient-text">SmartLeads</h3>
-   292	                    <p class="text-gray-600 mb-6">IA Conversacional para Instagram y redes sociales que convierte leads en ventas automáticamente</p>
-   293	                    
-   294	                    <div class="space-y-3 mb-6 text-left">
-   295	                        <div class="flex items-center">
-   296	                            <i class="fab fa-instagram text-pink-500 mr-3"></i>
-   297	                            <span class="text-sm">Instagram Direct & Comments</span>
-   298	                        </div>
-   299	                        <div class="flex items-center">
-   300	                            <i class="fab fa-facebook-messenger text-blue-500 mr-3"></i>
-   301	                            <span class="text-sm">Facebook Messenger</span>
-   302	                        </div>
-   303	                        <div class="flex items-center">
-   304	                            <i class="fas fa-share-alt text-purple-500 mr-3"></i>
-   305	                            <span class="text-sm">Múltiples Plataformas</span>
-   306	                        </div>
-   307	                        <div class="flex items-center">
-   308	                            <i class="fas fa-calendar-check text-green-500 mr-3"></i>
-   309	                            <span class="text-sm">Agenda Citas Automática</span>
-   310	                        </div>
-   311	                    </div>
-   312	                    
-   313	                    <a href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank" class="btn-primary text-white px-6 py-3 rounded-full font-semibold inline-flex items-center w-full justify-center">
-   314	                        <i class="fas fa-arrow-right mr-2"></i>
-   315	                        Implementar SmartLeads
-   316	                    </a>
-   317	                </div>
-   318	                
-   319	                <!-- Agentes Inteligentes -->
-   320	                <div class="product-card rounded-2xl p-8 text-center hover-scale">
-   321	                    <div class="service-icon w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-   322	                        <i class="fas fa-file-alt text-white text-3xl"></i>
-   323	                    </div>
-   324	                    <h3 class="text-2xl font-bold mb-4 gradient-text">Agentes Inteligentes</h3>
-   325	                    <p class="text-gray-600 mb-6">Automatiza tareas documentales: revisa contratos, genera resúmenes y gestiona emails inteligentemente</p>
-   326	                    
-   327	                    <div class="space-y-3 mb-6 text-left">
-   328	                        <div class="flex items-center">
-   329	                            <i class="fas fa-file-contract text-blue-500 mr-3"></i>
-   330	                            <span class="text-sm">Revisión de Documentos</span>
-   331	                        </div>
-   332	                        <div class="flex items-center">
-   333	                            <i class="fas fa-envelope text-red-500 mr-3"></i>
-   334	                            <span class="text-sm">Gestión de Emails</span>
-   335	                        </div>
-   336	                        <div class="flex items-center">
-   337	                            <i class="fas fa-clipboard-list text-green-500 mr-3"></i>
-   338	                            <span class="text-sm">Resúmenes Automáticos</span>
-   339	                        </div>
-   340	                        <div class="flex items-center">
-   341	                            <i class="fas fa-search text-purple-500 mr-3"></i>
-   342	                            <span class="text-sm">Análisis de Contenido</span>
-   343	                        </div>
-   344	                    </div>
-   345	                    
-   346	                    <a href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank" class="btn-primary text-white px-6 py-3 rounded-full font-semibold inline-flex items-center w-full justify-center">
-   347	                        <i class="fas fa-arrow-right mr-2"></i>
-   348	                        Implementar Agentes
-   349	                    </a>
-   350	                </div>
-   351	                
-   352	                <!-- Agentes de Voz -->
-   353	                <div class="product-card rounded-2xl p-8 text-center hover-scale">
-   354	                    <div class="service-icon w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-   355	                        <i class="fas fa-phone text-white text-3xl"></i>
-   356	                    </div>
-   357	                    <h3 class="text-2xl font-bold mb-4 gradient-text">Agentes de Voz</h3>
-   358	                    <p class="text-gray-600 mb-6">IA que realiza y recibe llamadas automáticamente con voz natural para prospección y atención al cliente</p>
-   359	                    
-   360	                    <div class="space-y-3 mb-6 text-left">
-   361	                        <div class="flex items-center">
-   362	                            <i class="fas fa-phone-alt text-green-500 mr-3"></i>
-   363	                            <span class="text-sm">Llamadas Outbound</span>
-   364	                        </div>
-   365	                        <div class="flex items-center">
-   366	                            <i class="fas fa-headset text-blue-500 mr-3"></i>
-   367	                            <span class="text-sm">Atención Inbound</span>
-   368	                        </div>
-   369	                        <div class="flex items-center">
-   370	                            <i class="fas fa-microphone text-red-500 mr-3"></i>
-   371	                            <span class="text-sm">Voz Natural Humana</span>
-   372	                        </div>
-   373	                        <div class="flex items-center">
-   374	                            <i class="fas fa-chart-line text-purple-500 mr-3"></i>
-   375	                            <span class="text-sm">Prospección Masiva</span>
-   376	                        </div>
-   377	                    </div>
-   378	                    
-   379	                    <a href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank" class="btn-primary text-white px-6 py-3 rounded-full font-semibold inline-flex items-center w-full justify-center">
-   380	                        <i class="fas fa-arrow-right mr-2"></i>
-   381	                        Implementar Voz IA
-   382	                    </a>
-   383	                </div>
-   384	            </div>
-   385	        </div>
-   386	    </section>
-   387	
-   388	    <!-- Ejemplos Detallados -->
-   389	    <section id="ejemplos" class="py-20 bg-gray-50">
-   390	        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-   391	            <div class="text-center mb-16">
-   392	                <h2 class="text-4xl font-bold mb-4">Ejemplos <span class="gradient-text">Casos de Uso Reales</span></h2>
-   393	                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Ve cómo nuestros 3 productos transforman operaciones reales en diferentes industrias</p>
-   394	            </div>
-   395	            
-   396	            <!-- SmartLeads Ejemplos -->
-   397	            <div class="mb-16">
-   398	                <h3 class="text-3xl font-bold text-center mb-8 gradient-text">SmartLeads en Acción</h3>
-   399	                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-   400	                    <div class="feature-highlight rounded-xl p-6">
-   401	                        <h4 class="text-xl font-bold mb-3 flex items-center">
-   402	                            <i class="fas fa-home text-blue-600 mr-3"></i>
-   403	                            Inmobiliaria Premium
-   404	                        </h4>
-   405	                        <p class="text-gray-700 mb-4"><strong>Situación:</strong> 200+ leads diarios por WhatsApp, muchos perdidos por respuesta tardía</p>
-   406	                        <p class="text-gray-700 mb-4"><strong>Solución IA:</strong></p>
-   407	                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
-   408	                            <li>• "¡Hola! Vi que te interesa el apartamento en Polanco. ¿Cuándo podrías visitarlo?"</li>
-   409	                            <li>• Califica automáticamente: presupuesto, urgencia, ubicación preferida</li>
-   410	                            <li>• Agenda visitas directamente: "Perfecto, te reservo mañana a las 3pm"</li>
-   411	                        </ul>
-   412	                        <p class="text-green-600 font-bold">Resultado: 85% más conversiones, 0 leads perdidos</p>
-   413	                    </div>
-   414	                    
-   415	                    <div class="feature-highlight rounded-xl p-6">
-   416	                        <h4 class="text-xl font-bold mb-3 flex items-center">
-   417	                            <i class="fas fa-dumbbell text-red-600 mr-3"></i>
-   418	                            Cadena de Gimnasios
-   419	                        </h4>
-   420	                        <p class="text-gray-700 mb-4"><strong>Situación:</strong> Consultas en Instagram sobre membresías, horarios y clases</p>
-   421	                        <p class="text-gray-700 mb-4"><strong>Solución IA:</strong></p>
-   422	                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
-   423	                            <li>• "¡Hola! Te ayudo con la membresía. ¿Buscas gym cerca de tu trabajo o casa?"</li>
-   424	                            <li>• Envía horarios de clases automáticamente</li>
-   425	                            <li>• Agenda clase de prueba gratuita</li>
-   426	                        </ul>
-   427	                        <p class="text-green-600 font-bold">Resultado: 150% más inscripciones desde redes sociales</p>
-   428	                    </div>
-   429	                </div>
-   430	            </div>
-   431	            
-   432	            <!-- Agentes Inteligentes Ejemplos -->
-   433	            <div class="mb-16">
-   434	                <h3 class="text-3xl font-bold text-center mb-8 gradient-text">Agentes Inteligentes en Acción</h3>
-   435	                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-   436	                    <div class="feature-highlight rounded-xl p-6">
-   437	                        <h4 class="text-xl font-bold mb-3 flex items-center">
-   438	                            <i class="fas fa-gavel text-purple-600 mr-3"></i>
-   439	                            Bufete de Abogados
-   440	                        </h4>
-   441	                        <p class="text-gray-700 mb-4"><strong>Situación:</strong> 50+ contratos semanales para revisar, proceso manual de 2 horas cada uno</p>
-   442	                        <p class="text-gray-700 mb-4"><strong>Solución IA:</strong></p>
-   443	                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
-   444	                            <li>• Revisa contratos automáticamente en 5 minutos</li>
-   445	                            <li>• Identifica cláusulas problemáticas y riesgos</li>
-   446	                            <li>• Genera resumen ejecutivo para abogados</li>
-   447	                            <li>• Envía email con observaciones al cliente</li>
-   448	                        </ul>
-   449	                        <p class="text-green-600 font-bold">Resultado: 90% menos tiempo, 300% más contratos procesados</p>
-   450	                    </div>
-   451	                    
-   452	                    <div class="feature-highlight rounded-xl p-6">
-   453	                        <h4 class="text-xl font-bold mb-3 flex items-center">
-   454	                            <i class="fas fa-hospital text-green-600 mr-3"></i>
-   455	                            Hospital Privado
-   456	                        </h4>
-   457	                        <p class="text-gray-700 mb-4"><strong>Situación:</strong> Cientos de emails diarios, informes médicos por resumir</p>
-   458	                        <p class="text-gray-700 mb-4"><strong>Solución IA:</strong></p>
-   459	                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
-   460	                            <li>• Clasifica emails por urgencia y departamento</li>
-   461	                            <li>• Resume historiales médicos largos</li>
-   462	                            <li>• Extrae información clave para doctores</li>
-   463	                            <li>• Responde consultas administrativas básicas</li>
-   464	                        </ul>
-   465	                        <p class="text-green-600 font-bold">Resultado: 70% menos carga administrativa, mejor atención</p>
-   466	                    </div>
-   467	                </div>
-   468	            </div>
-   469	            
-   470	            <!-- Agentes de Voz Ejemplos -->
-   471	            <div class="mb-8">
-   472	                <h3 class="text-3xl font-bold text-center mb-8 gradient-text">Agentes de Voz en Acción</h3>
-   473	                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-   474	                    <div class="feature-highlight rounded-xl p-6">
-   475	                        <h4 class="text-xl font-bold mb-3 flex items-center">
-   476	                            <i class="fas fa-phone-alt text-blue-600 mr-3"></i>
-   477	                            Llamadas Outbound - Seguros
-   478	                        </h4>
-   479	                        <p class="text-gray-700 mb-4"><strong>Situación:</strong> 1000+ leads diarios para contactar, equipo humano limitado</p>
-   480	                        <p class="text-gray-700 mb-4"><strong>Solución IA:</strong></p>
-   481	                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
-   482	                            <li>• "Buenos días, habla Ana de Seguros Protección. ¿Tienes un minuto?"</li>
-   483	                            <li>• Califica interés en seguros de auto/vida/hogar</li>
-   484	                            <li>• Agenda cita con agente humano si hay interés</li>
-   485	                            <li>• Maneja objeciones comunes naturalmente</li>
-   486	                        </ul>
-   487	                        <p class="text-green-600 font-bold">Resultado: 500% más contactos, 40% conversión a citas</p>
-   488	                    </div>
-   489	                    
-   490	                    <div class="feature-highlight rounded-xl p-6">
-   491	                        <h4 class="text-xl font-bold mb-3 flex items-center">
-   492	                            <i class="fas fa-headset text-green-600 mr-3"></i>
-   493	                            Llamadas Inbound - E-commerce
-   494	                        </h4>
-   495	                        <p class="text-gray-700 mb-4"><strong>Situación:</strong> Atención al cliente 24/7, consultas repetitivas sobre pedidos</p>
-   496	                        <p class="text-gray-700 mb-4"><strong>Solución IA:</strong></p>
-   497	                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
-   498	                            <li>• "Hola, soy Carmen de atención al cliente. ¿En qué puedo ayudarte?"</li>
-   499	                            <li>• Consulta estado de pedidos automáticamente</li>
-   500	                            <li>• Resuelve problemas de facturación</li>
-   501	                            <li>• Transfiere a humano solo casos complejos</li>
-   502	                        </ul>
-   503	                        <p class="text-green-600 font-bold">Resultado: 80% consultas resueltas automáticamente, 24/7</p>
-   504	                    </div>
-   505	                </div>
-   506	            </div>
-   507	        </div>
-   508	    </section>
-   509	
-   510	    <!-- Industrias Section -->
-   511	    <section id="industrias" class="py-20 bg-white">
-   512	        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-   513	            <div class="text-center mb-16">
-   514	                <h2 class="text-4xl font-bold mb-4">Impacto Comprobado en <span class="gradient-text">Diversas Industrias</span></h2>
-   515	                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Nuestros 3 productos se adaptan a las necesidades específicas de cada sector</p>
-   516	            </div>
-   517	            
-   518	            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-   519	                <div class="card-hover bg-white rounded-xl p-8 border-2 border-gray-100">
-   520	                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-   521	                        <i class="fas fa-home text-blue-600 text-2xl"></i>
-   522	                    </div>
-   523	                    <h3 class="text-xl font-bold mb-4">Bienes Raíces</h3>
-   524	                    <div class="space-y-2 text-sm">
-   525	                        <p><strong>SmartLeads:</strong> Califica leads y agenda visitas</p>
-   526	                        <p><strong>Agentes IA:</strong> Revisa contratos de compraventa</p>
-   527	                        <p><strong>Voz IA:</strong> Prospección masiva de propietarios</p>
-   528	                    </div>
-   529	                </div>
-   530	                
-   531	                <div class="card-hover bg-white rounded-xl p-8 border-2 border-gray-100">
-   532	                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
-   533	                        <i class="fas fa-user-md text-green-600 text-2xl"></i>
-   534	                    </div>
-   535	                    <h3 class="text-xl font-bold mb-4">Salud y Medicina</h3>
-   536	                    <div class="space-y-2 text-sm">
-   537	                        <p><strong>SmartLeads:</strong> Agenda citas médicas 24/7</p>
-   538	                        <p><strong>Agentes IA:</strong> Resume historiales clínicos</p>
-   539	                        <p><strong>Voz IA:</strong> Recordatorios de citas automáticos</p>
-   540	                    </div>
-   541	                </div>
-   542	                
-   543	                <div class="card-hover bg-white rounded-xl p-8 border-2 border-gray-100">
-   544	                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
-   545	                        <i class="fas fa-graduation-cap text-purple-600 text-2xl"></i>
-   546	                    </div>
-   547	                    <h3 class="text-xl font-bold mb-4">Educación</h3>
-   548	                    <div class="space-y-2 text-sm">
-   549	                        <p><strong>SmartLeads:</strong> Info de cursos e inscripciones</p>
-   550	                        <p><strong>Agentes IA:</strong> Corrige exámenes y ensayos</p>
-   551	                        <p><strong>Voz IA:</strong> Seguimiento a estudiantes</p>
-   552	                    </div>
-   553	                </div>
-   554	                
-   555	                <div class="card-hover bg-white rounded-xl p-8 border-2 border-gray-100">
-   556	                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6">
-   557	                        <i class="fas fa-shield-alt text-red-600 text-2xl"></i>
-   558	                    </div>
-   559	                    <h3 class="text-xl font-bold mb-4">Seguros</h3>
-   560	                    <div class="space-y-2 text-sm">
-   561	                        <p><strong>SmartLeads:</strong> Cotizaciones automáticas</p>
-   562	                        <p><strong>Agentes IA:</strong> Procesa reclamos y pólizas</p>
-   563	                        <p><strong>Voz IA:</strong> Prospección de nuevos clientes</p>
-   564	                    </div>
-   565	                </div>
-   566	                
-   567	                <div class="card-hover bg-white rounded-xl p-8 border-2 border-gray-100">
-   568	                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
-   569	                        <i class="fas fa-gavel text-yellow-600 text-2xl"></i>
-   570	                    </div>
-   571	                    <h3 class="text-xl font-bold mb-4">Legal</h3>
-   572	                    <div class="space-y-2 text-sm">
-   573	                        <p><strong>SmartLeads:</strong> Consultas legales iniciales</p>
-   574	                        <p><strong>Agentes IA:</strong> Análisis de contratos</p>
-   575	                        <p><strong>Voz IA:</strong> Seguimiento de casos</p>
-   576	                    </div>
-   577	                </div>
-   578	                
-   579	                <div class="card-hover bg-white rounded-xl p-8 border-2 border-gray-100">
-   580	                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
-   581	                        <i class="fas fa-store text-indigo-600 text-2xl"></i>
-   582	                    </div>
-   583	                    <h3 class="text-xl font-bold mb-4">E-commerce</h3>
-   584	                    <div class="space-y-2 text-sm">
-   585	                        <p><strong>SmartLeads:</strong> Soporte de ventas 24/7</p>
-   586	                        <p><strong>Agentes IA:</strong> Gestión de inventario</p>
-   587	                        <p><strong>Voz IA:</strong> Atención telefónica completa</p>
-   588	                    </div>
-   589	                </div>
-   590	            </div>
-   591	            
-   592	            <div class="text-center mt-12">
-   593	                <a href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center hover-scale">
-   594	                    <i class="fas fa-cog mr-2"></i>
-   595	                    Diseña tu Suite IA a Medida
-   596	                </a>
-   597	            </div>
-   598	        </div>
-   599	    </section>
-   600	
-   601	    <!-- Testimonios Section -->
-   602	    <section id="testimonios" class="py-20 bg-gray-50">
-   603	        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-   604	            <div class="text-center mb-16">
-   605	                <h2 class="text-4xl font-bold mb-4">Lo que dicen nuestros <span class="gradient-text">Clientes</span></h2>
-   606	                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Casos reales de éxito con nuestros 3 productos implementados</p>
-   607	            </div>
-   608	            
-   609	            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-   610	                <div class="bg-white rounded-xl p-8 shadow-lg">
-   611	                    <div class="flex items-center mb-4">
-   612	                        <div class="flex text-yellow-400">
-   613	                            <i class="fas fa-star"></i>
-   614	                            <i class="fas fa-star"></i>
-   615	                            <i class="fas fa-star"></i>
-   616	                            <i class="fas fa-star"></i>
-   617	                            <i class="fas fa-star"></i>
-   618	                        </div>
-   619	                    </div>
-   620	                    <p class="text-gray-600 mb-6 italic">"La suite completa transformó nuestra operación. SmartLeads duplicó las ventas, los Agentes IA procesan contratos en minutos, y la Voz IA contacta 500+ leads diarios. ROI del 400%."</p>
-   621	                    <div class="flex items-center">
-   622	                        <div class="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white font-bold mr-4">
-   623	                            MC
-   624	                        </div>
-   625	                        <div>
-   626	                            <div class="font-bold">María Carmen</div>
-   627	                            <div class="text-sm text-gray-500">CEO - Inmobiliaria Premium</div>
-   628	                        </div>
-   629	                    </div>
-   630	                </div>
-   631	                
-   632	                <div class="bg-white rounded-xl p-8 shadow-lg">
-   633	                    <div class="flex items-center mb-4">
-   634	                        <div class="flex text-yellow-400">
-   635	                            <i class="fas fa-star"></i>
-   636	                            <i class="fas fa-star"></i>
-   637	                            <i class="fas fa-star"></i>
-   638	                            <i class="fas fa-star"></i>
-   639	                            <i class="fas fa-star"></i>
-   640	                        </div>
-   641	                    </div>
-   642	                    <p class="text-gray-600 mb-6 italic">"Los Agentes Inteligentes revolucionaron nuestro bufete. Revisamos 100+ contratos semanales automáticamente. El tiempo que ahorramos lo invertimos en casos más complejos."</p>
-   643	                    <div class="flex items-center">
-   644	                        <div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center text-white font-bold mr-4">
-   645	                            JR
-   646	                        </div>
-   647	                        <div>
-   648	                            <div class="font-bold">José Rodríguez</div>
-   649	                            <div class="text-sm text-gray-500">Socio - Bufete Rodríguez & Asociados</div>
-   650	                        </div>
-   651	                    </div>
-   652	                </div>
-   653	                
-   654	                <div class="bg-white rounded-xl p-8 shadow-lg">
-   655	                    <div class="flex items-center mb-4">
-   656	                        <div class="flex text-yellow-400">
-   657	                            <i class="fas fa-star"></i>
-   658	                            <i class="fas fa-star"></i>
-   659	                            <i class="fas fa-star"></i>
-   660	                            <i class="fas fa-star"></i>
-   661	                            <i class="fas fa-star"></i>
-   662	                        </div>
-   663	                    </div>
-   664	                    <p class="text-gray-600 mb-6 italic">"Los Agentes de Voz son increíbles. Suenan completamente humanos y manejan el 80% de nuestras llamadas inbound. Atención 24/7 real sin contratar más personal."</p>
-   665	                    <div class="flex items-center">
-   666	                        <div class="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-400 rounded-full flex items-center justify-center text-white font-bold mr-4">
-   667	                            AS
-   668	                        </div>
-   669	                        <div>
-   670	                            <div class="font-bold">Ana Silva</div>
-   671	                            <div class="text-sm text-gray-500">Directora - TechSupport Pro</div>
-   672	                        </div>
-   673	                    </div>
-   674	                </div>
-   675	            </div>
-   676	        </div>
-   677	    </section>
-   678	
-   679	    <!-- FAQ Section -->
-   680	    <section id="faq" class="py-20 bg-white">
-   681	        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-   682	            <div class="text-center mb-16">
-   683	                <h2 class="text-4xl font-bold mb-4"><span class="gradient-text">Preguntas</span> Frecuentes</h2>
-   684	                <p class="text-xl text-gray-600">Resolvemos todas tus dudas sobre nuestros 3 productos de IA</p>
-   685	            </div>
-   686	            
-   687	            <div class="space-y-4">
-   688	                <div class="faq-item">
-   689	                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 rounded-lg flex justify-between items-center transition-colors">
-   690	                        <span class="font-semibold text-lg">¿Puedo implementar solo uno de los productos o necesito los 3?</span>
-   691	                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform"></i>
-   692	                    </button>
-   693	                    <div class="faq-content p-6 bg-white">
-   694	                        <p class="text-gray-600">Puedes implementar cualquier producto individualmente. Muchos clientes empiezan con SmartLeads y luego agregan los otros. Ofrecemos descuentos progresivos por implementar múltiples productos.</p>
-   695	                    </div>
-   696	                </div>
-   697	                
-   698	                <div class="faq-item">
-   699	                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 rounded-lg flex justify-between items-center transition-colors">
-   700	                        <span class="font-semibold text-lg">¿Los Agentes de Voz realmente suenan humanos?</span>
-   701	                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform"></i>
-   702	                    </button>
-   703	                    <div class="faq-content p-6 bg-white">
-   704	                        <p class="text-gray-600">Sí, utilizamos la tecnología de síntesis de voz más avanzada. Los agentes tienen entonación natural, pausas apropiadas y pueden manejar interrupciones. El 95% de las personas no detectan que es IA.</p>
-   705	                    </div>
-   706	                </div>
-   707	                
-   708	                <div class="faq-item">
-   709	                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 rounded-lg flex justify-between items-center transition-colors">
-   710	                        <span class="font-semibold text-lg">¿Qué tipos de documentos pueden procesar los Agentes Inteligentes?</span>
-   711	                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform"></i>
-   712	                    </button>
-   713	                    <div class="faq-content p-6 bg-white">
-   714	                        <p class="text-gray-600">Procesan PDFs, Word, Excel, emails, contratos, facturas, informes médicos, documentos legales, propuestas comerciales y más. Pueden extraer información específica, generar resúmenes y identificar patrones o anomalías.</p>
-   715	                    </div>
-   716	                </div>
-   717	                
-   718	                <div class="faq-item">
-   719	                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 rounded-lg flex justify-between items-center transition-colors">
-   720	                        <span class="font-semibold text-lg">¿Cómo se integran los 3 productos entre sí?</span>
-   721	                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform"></i>
-   722	                    </button>
-   723	                    <div class="faq-content p-6 bg-white">
-   724	                        <p class="text-gray-600">Funcionan de manera integrada: SmartLeads califica un lead, los Agentes Inteligentes procesan su documentación automáticamente, y los Agentes de Voz hacen seguimiento telefónico. Todo sincronizado en tu CRM.</p>
-   725	                    </div>
-   726	                </div>
-   727	                
-   728	                <div class="faq-item">
-   729	                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 rounded-lg flex justify-between items-center transition-colors">
-   730	                        <span class="font-semibold text-lg">¿Cuánto tiempo toma implementar los 3 productos?</span>
-   731	                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform"></i>
-   732	                    </button>
-   733	                    <div class="faq-content p-6 bg-white">
-   734	                        <p class="text-gray-600">SmartLeads: 3-7 días. Agentes Inteligentes: 5-10 días. Agentes de Voz: 7-14 días. Si implementas los 3 juntos, el proceso total es de 2-3 semanas con implementación escalonada.</p>
-   735	                    </div>
-   736	                </div>
-   737	                
-   738	                <div class="faq-item">
-   739	                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 rounded-lg flex justify-between items-center transition-colors">
-   740	                        <span class="font-semibold text-lg">¿Hay límites en el volumen de procesamiento?</span>
-   741	                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform"></i>
-   742	                    </button>
-   743	                    <div class="faq-content p-6 bg-white">
-   744	                        <p class="text-gray-600">No hay límites fijos. SmartLeads maneja miles de conversaciones simultáneas, los Agentes Inteligentes procesan cientos de documentos por hora, y los Agentes de Voz pueden realizar llamadas masivas. Todo escalable según tu negocio.</p>
-   745	                    </div>
-   746	                </div>
-   747	            </div>
-   748	        </div>
-   749	    </section>
-   750	
-   751	    <!-- Contact Section con Calendario Integrado -->
-   752	    <section id="contacto" class="py-20 bg-gray-900 text-white">
-   753	        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-   754	            <div class="text-center mb-16">
-   755	                <h2 class="text-4xl font-bold mb-4">¿Listo para transformar tu <span class="gradient-text">OPERACIÓN COMPLETA</span> con IA?</h2>
-   756	                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Agenda tu consulta gratuita y descubre cómo nuestros 3 productos pueden revolucionar tu negocio en 30 días</p>
-   757	            </div>
-   758	            
-   759	            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-   760	                
-   761	                <!-- Calendario Integrado -->
-   762	                <div class="calendar-container rounded-2xl p-8">
-   763	                    <h3 class="text-2xl font-bold mb-6 text-gray-800">Selecciona tu horario preferido</h3>
-   764	                    <div class="bg-white rounded-xl overflow-hidden">
-   765	                        <iframe 
-   766	                            src="https://launchpad.aizentek.com/widget/bookings/aizentek" 
-   767	                            class="calendar-iframe w-full h-96 md:h-[500px]"
-   768	                            title="Calendario de AiZentek - Agenda tu consulta gratuita">
-   769	                        </iframe>
-   770	                    </div>
-   771	                    <div class="text-center mt-6">
-   772	                        <p class="text-gray-600 text-sm">
-   773	                            <i class="fas fa-shield-alt mr-2 text-green-500"></i>
-   774	                            Respuesta garantizada en menos de 2 horas
-   775	                        </p>
-   776	                    </div>
-   777	                </div>
-   778	                
-   779	                <!-- Información de Contacto y CTA -->
-   780	                <div>
-   781	                    <div class="space-y-8">
-   782	                        <div class="text-center">
-   783	                            <a href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-xl inline-flex items-center hover-scale">
-   784	                                <i class="fas fa-calendar-alt mr-2"></i>
-   785	                                Agenda tu Consulta Ahora
-   786	                            </a>
-   787	                            <p class="text-gray-400 mt-4">O usa el calendario de la izquierda</p>
-   788	                        </div>
-   789	                        
-   790	                        <div class="bg-gray-800 rounded-xl p-6">
-   791	                            <h4 class="font-bold text-lg mb-4">¿Por qué elegir AiZentek?</h4>
-   792	                            <ul class="space-y-3 text-gray-300">
-   793	                                <li class="flex items-center">
-   794	                                    <i class="fas fa-check text-green-400 mr-3"></i>
-   795	                                    Suite completa de IA empresarial
-   796	                                </li>
-   797	                                <li class="flex items-center">
-   798	                                    <i class="fas fa-check text-green-400 mr-3"></i>
-   799	                                    ROI comprobado del 400% promedio
-   800	                                </li>
-   801	                                <li class="flex items-center">
-   802	                                    <i class="fas fa-check text-green-400 mr-3"></i>
-   803	                                    Implementación en 2-3 semanas
-   804	                                </li>
-   805	                                <li class="flex items-center">
-   806	                                    <i class="fas fa-check text-green-400 mr-3"></i>
-   807	                                    Soporte técnico 24/7 en español
-   808	                                </li>
-   809	                                <li class="flex items-center">
-   810	                                    <i class="fas fa-check text-green-400 mr-3"></i>
-   811	                                    Integración sin cambiar tu flujo actual
-   812	                                </li>
-   813	                            </ul>
-   814	                        </div>
-   815	
-   816	                        <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl p-6 text-center">
-   817	                            <h4 class="font-bold text-lg mb-3">🎯 En tu consulta gratuita descubrirás:</h4>
-   818	                            <ul class="space-y-2 text-sm text-left">
-   819	                                <li class="flex items-center">
-   820	                                    <i class="fas fa-arrow-right text-yellow-400 mr-2"></i>
-   821	                                    Cómo SmartLeads puede duplicar tus conversiones en redes sociales
-   822	                                </li>
-   823	                                <li class="flex items-center">
-   824	                                    <i class="fas fa-arrow-right text-yellow-400 mr-2"></i>
-   825	                                    Análisis personalizado de tu operación actual
-   826	                                </li>
-   827	                                <li class="flex items-center">
-   828	                                    <i class="fas fa-arrow-right text-yellow-400 mr-2"></i>
-   829	                                    Plan de implementación paso a paso
-   830	                                </li>
-   831	                                <li class="flex items-center">
-   832	                                    <i class="fas fa-arrow-right text-yellow-400 mr-2"></i>
-   833	                                    Proyección de ROI específica para tu negocio
-   834	                                </li>
-   835	                            </ul>
-   836	                        </div>
-   837	                        
-   838	                        <div class="text-center">
-   839	                            <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-6">
-   840	                                <h4 class="font-bold text-lg mb-3">💬 ¿Tienes alguna pregunta?</h4>
-   841	                                <p class="text-sm mb-4">Nuestro equipo te contactará inmediatamente después de agendar tu consulta</p>
-   842	                                <div class="flex justify-center">
-   843	                                    <a href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank" class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-full font-semibold inline-flex items-center transition-colors">
-   844	                                        <i class="fas fa-calendar-check mr-2"></i>
-   845	                                        Agenda tu Consulta
-   846	                                    </a>
-   847	                                </div>
-   848	                            </div>
-   849	                        </div>
-   850	                    </div>
-   851	                </div>
-   852	            </div>
-   853	        </div>
-   854	    </section>
-   855	
-   856	    <!-- Footer -->
-   857	    <footer class="bg-black text-white py-12">
-   858	        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-   859	            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-   860	                <div>
-   861	                    <div class="text-2xl font-bold gradient-text mb-4">AiZentek</div>
-   862	                    <p class="text-gray-400 mb-4">Suite completa de IA empresarial: Chat, Documentos y Voz en una sola plataforma.</p>
-   863	                    <div class="flex space-x-4">
-   864	                        <a href="https://www.instagram.com/aizentek/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-   865	                            <i class="fab fa-instagram text-xl"></i>
-   866	                        </a>
-   867	                        <a href="https://www.linkedin.com/company/aizentek/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-   868	                            <i class="fab fa-linkedin text-xl"></i>
-   869	                        </a>
-   870	                        <a href="https://www.tiktok.com/@aizentek?is_from_webapp=1&sender_device=pc" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-   871	                            <i class="fab fa-tiktok text-xl"></i>
-   872	                        </a>
-   873	                        <a href="https://www.facebook.com/profile.php?id=61577021385752" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-   874	                            <i class="fab fa-facebook text-xl"></i>
-   875	                        </a>
-   876	                    </div>
-   877	                </div>
-   878	                
-   879	                <div>
-   880	                    <h3 class="font-bold mb-4">Productos</h3>
-   881	                    <ul class="space-y-2 text-gray-400">
-   882	                        <li><a href="#productos" class="hover:text-white transition-colors">SmartLeads</a></li>
-   883	                        <li><a href="#productos" class="hover:text-white transition-colors">Agentes Inteligentes</a></li>
-   884	                        <li><a href="#productos" class="hover:text-white transition-colors">Agentes de Voz</a></li>
-   885	                        <li><a href="#productos" class="hover:text-white transition-colors">Suite Completa</a></li>
-   886	                    </ul>
-   887	                </div>
-   888	                
-   889	                <div>
-   890	                    <h3 class="font-bold mb-4">Industrias</h3>
-   891	                    <ul class="space-y-2 text-gray-400">
-   892	                        <li><a href="#industrias" class="hover:text-white transition-colors">Bienes Raíces</a></li>
-   893	                        <li><a href="#industrias" class="hover:text-white transition-colors">Salud y Medicina</a></li>
-   894	                        <li><a href="#industrias" class="hover:text-white transition-colors">Educación</a></li>
-   895	                        <li><a href="#industrias" class="hover:text-white transition-colors">Legal</a></li>
-   896	                    </ul>
-   897	                </div>
-   898	                
-   899	                <div>
-   900	                    <h3 class="font-bold mb-4">Contacto</h3>
-   901	                    <ul class="space-y-2 text-gray-400">
-   902	                        <li><a href="#contacto" class="hover:text-white transition-colors">Consulta Gratuita</a></li>
-   903	                        <li><a href="mailto:contacto@aizentek.com" class="hover:text-white transition-colors">Email</a></li>
-   904	                        <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
-   905	                        <li><a href="#testimonios" class="hover:text-white transition-colors">Testimonios</a></li>
-   906	                    </ul>
-   907	                </div>
-   908	            </div>
-   909	            
-   910	            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-   911	                <p>&copy; 2024 AiZentek. Todos los derechos reservados. | Suite Completa de IA Empresarial</p>
-   912	            </div>
-   913	        </div>
-   914	    </footer>
-   915	
-   916	    <!-- JavaScript -->
-   917	    <script>
-   918	        // Mobile Menu Toggle
-   919	        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-   920	        const mobileMenu = document.getElementById('mobile-menu');
-   921	        
-   922	        mobileMenuBtn.addEventListener('click', () => {
-   923	            mobileMenu.classList.toggle('hidden');
-   924	        });
-   925	
-   926	        // Smooth Scrolling for Navigation Links
-   927	        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-   928	            anchor.addEventListener('click', function (e) {
-   929	                e.preventDefault();
-   930	                const target = document.querySelector(this.getAttribute('href'));
-   931	                if (target) {
-   932	                    target.scrollIntoView({
-   933	                        behavior: 'smooth',
-   934	                        block: 'start'
-   935	                    });
-   936	                    // Close mobile menu if open
-   937	                    mobileMenu.classList.add('hidden');
-   938	                }
-   939	            });
-   940	        });
-   941	
-   942	        // Navbar Background Change on Scroll
-   943	        window.addEventListener('scroll', () => {
-   944	            const navbar = document.getElementById('navbar');
-   945	            if (window.scrollY > 50) {
-   946	                navbar.classList.add('shadow-lg');
-   947	                navbar.classList.remove('bg-white');
-   948	                navbar.classList.add('bg-white');
-   949	            } else {
-   950	                navbar.classList.remove('shadow-lg');
-   951	            }
-   952	        });
-   953	
-   954	        // Counter Animation
-   955	        function animateCounters() {
-   956	            const counters = document.querySelectorAll('[data-target]');
-   957	            
-   958	            counters.forEach(counter => {
-   959	                const target = parseInt(counter.getAttribute('data-target'));
-   960	                const count = +counter.innerText;
-   961	                const increment = target / 100;
-   962	                
-   963	                if (count < target) {
-   964	                    counter.innerText = Math.ceil(count + increment);
-   965	                    setTimeout(() => animateCounters(), 20);
-   966	                } else {
-   967	                    counter.innerText = target;
-   968	                }
-   969	            });
-   970	        }
-   971	
-   972	        // Trigger counter animation when in view
-   973	        const observer = new IntersectionObserver((entries) => {
-   974	            entries.forEach(entry => {
-   975	                if (entry.isIntersecting) {
-   976	                    animateCounters();
-   977	                    observer.unobserve(entry.target);
-   978	                }
-   979	            });
-   980	        });
-   981	
-   982	        document.querySelectorAll('[data-target]').forEach(counter => {
-   983	            observer.observe(counter);
-   984	        });
-   985	
-   986	        // FAQ Functionality
-   987	        document.querySelectorAll('.faq-question').forEach(button => {
-   988	            button.addEventListener('click', () => {
-   989	                const content = button.nextElementSibling;
-   990	                const icon = button.querySelector('i');
-   991	                
-   992	                // Close all other FAQ items
-   993	                document.querySelectorAll('.faq-content').forEach(item => {
-   994	                    if (item !== content) {
-   995	                        item.classList.remove('active');
-   996	                    }
-   997	                });
-   998	                
-   999	                document.querySelectorAll('.faq-question i').forEach(i => {
-  1000	                    if (i !== icon) {
-  1001	                        i.classList.remove('rotate-180');
-  1002	                    }
-  1003	                });
-  1004	                
-  1005	                // Toggle current FAQ item
-  1006	                content.classList.toggle('active');
-  1007	                icon.classList.toggle('rotate-180');
-  1008	            });
-  1009	        });
-  1010	
-  1011	        // Add animation classes when elements come into view
-  1012	        const animateOnScroll = new IntersectionObserver((entries) => {
-  1013	            entries.forEach(entry => {
-  1014	                if (entry.isIntersecting) {
-  1015	                    entry.target.classList.add('animate-fade-in');
-  1016	                }
-  1017	            });
-  1018	        });
-  1019	
-  1020	        document.querySelectorAll('.card-hover, .hover-scale, .product-card').forEach(el => {
-  1021	            animateOnScroll.observe(el);
-  1022	        });
-  1023	
-  1024	        // Button Click Analytics (you can replace with your analytics code)
-  1025	        document.querySelectorAll('a[href*="launchpad.aizentek.com"]').forEach(button => {
-  1026	            button.addEventListener('click', () => {
-  1027	                console.log('CTA Button clicked:', button.textContent);
-  1028	                // Add your analytics tracking here
-  1029	            });
-  1030	        });
-  1031	
-  1032	        // Service Icon Animation
-  1033	        document.querySelectorAll('.service-icon').forEach(icon => {
-  1034	            icon.addEventListener('mouseenter', () => {
-  1035	                icon.style.animationDuration = '0.5s';
-  1036	            });
-  1037	            icon.addEventListener('mouseleave', () => {
-  1038	                icon.style.animationDuration = '3s';
-  1039	            });
-  1040	        });
-  1041	
-  1042	        // Calendar iframe responsiveness
-  1043	        function adjustCalendarHeight() {
-  1044	            const iframe = document.querySelector('.calendar-iframe');
-  1045	            if (iframe) {
-  1046	                // Adjust height based on screen size
-  1047	                if (window.innerWidth < 768) {
-  1048	                    iframe.style.height = '400px';
-  1049	                } else {
-  1050	                    iframe.style.height = '500px';
-  1051	                }
-  1052	            }
-  1053	        }
-  1054	
-  1055	        // Adjust on load and resize
-  1056	        window.addEventListener('load', adjustCalendarHeight);
-  1057	        window.addEventListener('resize', adjustCalendarHeight);
-  1058	    </script>
-  1059	   <!-- 1) Parche: forzar todos los shadow roots a 'open' y ocultar solo el branding -->
-  1060	<script>
-  1061	(function () {
-  1062	  // --- utilidades ---
-  1063	  function hideBrandingIn(root) {
-  1064	    try {
-  1065	      // Busca el enlace oficial del crédito
-  1066	      root.querySelectorAll('a[href="https://elevenlabs.io/conversational-ai"]').forEach(a => {
-  1067	        const p = a.closest('p');
-  1068	        if (p) p.style.setProperty('display','none','important');
-  1069	      });
-  1070	      // Por si cambian el markup: detectar el texto
-  1071	      root.querySelectorAll('p').forEach(p => {
-  1072	        const t = (p.textContent || '').trim();
-  1073	        if (t.includes('Powered by ElevenLabs')) {
-  1074	          p.style.setProperty('display','none','important');
-  1075	        }
-  1076	      });
-  1077	    } catch (e) {}
-  1078	  }
-  1079	  function observeRoot(root) {
-  1080	    hideBrandingIn(root);
-  1081	    const mo = new MutationObserver(() => hideBrandingIn(root));
-  1082	    mo.observe(root, { childList: true, subtree: true });
-  1083	  }
-  1084	  // --- parche de attachShadow: convertir 'closed' en 'open' ---
-  1085	  const _attach = Element.prototype.attachShadow;
-  1086	  if (_attach) {
-  1087	    Element.prototype.attachShadow = function(init) {
-  1088	      const patched = Object.assign({}, init || {}, { mode: 'open' });
-  1089	      const shadow = _attach.call(this, patched);
-  1090	      observeRoot(shadow);
-  1091	      return shadow;
-  1092	    };
-  1093	  }
-  1094	  // observar también el documento principal
-  1095	  observeRoot(document);
-  1096	})();
-  1097	</script>
-  1098	<elevenlabs-convai agent-id="agent_7901k3m3eh0sf5eaypvzvpa9zpjn"></elevenlabs-convai><script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
-  1099	
-  1100	</body>
-  1101	</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AiZentek - Suite Completa de IA: Chat, Documentos y Voz</title>
+    <meta name="description" content="Suite completa de IA empresarial: SmartLeads para WhatsApp/Instagram, Agentes Inteligentes para automatización de documentos, y Agentes de Voz para llamadas outbound/inbound.">
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #5a67d8 0%, #68588b 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            border: 2px solid #667eea;
+            color: #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #667eea;
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-counter {
+            animation: countUp 2s ease-out;
+        }
+        
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Estilos para FAQ */
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-content.active {
+            max-height: 300px;
+        }
+        
+        /* Service Icons */
+        .service-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Optimización para PDF */
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; }
+            .bg-gray-900, .bg-gray-800 { background: white !important; color: black !important; }
+            .text-white { color: black !important; }
+        }
+
+        .product-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .product-card:hover {
+            border: 2px solid #667eea;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .feature-highlight {
+            background: linear-gradient(90deg, #f0f9ff 0%, #e0e7ff 100%);
+            border-left: 4px solid #667eea;
+        }
+    </style>
+</head>
+<body class="smooth-scroll bg-white">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white shadow-lg z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold gradient-text">AiZentek</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Inicio</a>
+                    <a href="#productos" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Productos</a>
+                    <a href="#ejemplos" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Ejemplos</a>
+                    <a href="#industrias" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Industrias</a>
+                    <a href="#testimonios" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Testimonios</a>
+                    <a href="#faq" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">FAQ</a>
+                    <a href="#contacto" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Contacto</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank" class="btn-primary text-white px-6 py-2 rounded-full font-semibold">
+                        Consulta Gratuita
+                    </a>
+                    <button class="md:hidden text-gray-600" id="mobile-menu-btn">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
+                    <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Inicio</a>
+                    <a href="#productos" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Productos</a>
+                    <a href="#ejemplos" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Ejemplos</a>
+                    <a href="#industrias" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Industrias</a>
+                    <a href="#testimonios" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Testimonios</a>
+                    <a href="#faq" class="block px-3 py-2 text-gray-700 hover:text-purple-600">FAQ</a>
+                    <a href="#contacto" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-fade-in">
+                    <h1 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Suite Completa de <span class="gradient-text">IA Empresarial</span>
+                    </h1>
+                    <p class="text-xl mb-4 text-gray-300 leading-relaxed">
+                        <strong>Chat Inteligente:</strong> WhatsApp, Instagram y Messenger<br>
+                        <strong>Agentes Documentales:</strong> Revisa, resume y gestiona documentos<br>
+                        <strong>Agentes de Voz:</strong> Llamadas outbound e inbound automatizadas
+                    </p>
+                    <p class="text-lg mb-8 text-gray-400">
+                        Transforma completamente tu operación con IA que trabaja 24/7
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center justify-center">
+                            <i class="fas fa-rocket mr-2"></i>
+                            Implementar Ahora
+                        </a>
+                        <a href="#productos" class="btn-secondary px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center justify-center">
+                            <i class="fas fa-play mr-2"></i>
+                            Ver Productos
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="animate-fade-in">
+                    <div class="relative">
+                        <img src="AiZentek AI Platform.png" alt="AiZentek AI Platform" class="w-full rounded-2xl shadow-2xl">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-purple-900/20 to-transparent rounded-2xl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div class="animate-counter">
+                        <div class="text-4xl font-bold gradient-text" data-target="95">0</div>
+                        <div class="text-gray-400 mt-2">% Conversión</div>
+                    </div>
+                    <div class="animate-counter">
+                        <div class="text-4xl font-bold gradient-text" data-target="24">0</div>
+                        <div class="text-gray-400 mt-2">Horas Disponible</div>
+                    </div>
+                    <div class="animate-counter">
+                        <div class="text-4xl font-bold gradient-text" data-target="1000">0</div>
+                        <div class="text-gray-400 mt-2">+ Documentos/Día</div>
+                    </div>
+                    <div class="animate-counter">
+                        <div class="text-4xl font-bold gradient-text" data-target="500">0</div>
+                        <div class="text-gray-400 mt-2">+ Llamadas/Día</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Principales -->
+    <section id="productos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Nuestros <span class="gradient-text">3 Productos Principales</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Suite completa de IA que automatiza completamente tu operación: desde leads hasta documentos y llamadas</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- SmartLeads -->
+                <div class="product-card rounded-2xl p-8 text-center hover-scale">
+                    <div class="service-icon w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-comments text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 gradient-text">SmartLeads</h3>
+                    <p class="text-gray-600 mb-6">IA Conversacional para WhatsApp, Instagram y Messenger que convierte leads en ventas automáticamente</p>
+                    
+                    <div class="space-y-3 mb-6 text-left">
+                        <div class="flex items-center">
+                            <i class="fab fa-whatsapp text-green-500 mr-3"></i>
+                            <span class="text-sm">WhatsApp Business API</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fab fa-instagram text-pink-500 mr-3"></i>
+                            <span class="text-sm">Instagram Direct & Comments</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fab fa-facebook-messenger text-blue-500 mr-3"></i>
+                            <span class="text-sm">Facebook Messenger</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-calendar-check text-purple-500 mr-3"></i>
+                            <span class="text-sm">Agenda Citas Automática</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank" class="btn-primary text-white px-6 py-3 rounded-full font-semibold inline-flex items-center w-full justify-center">
+                        <i class="fas fa-arrow-right mr-2"></i>
+                        Implementar SmartLeads
+                    </a>
+                </div>
+                
+                <!-- Agentes Inteligentes -->
+                <div class="product-card rounded-2xl p-8 text-center hover-scale">
+                    <div class="service-icon w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-file-alt text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 gradient-text">Agentes Inteligentes</h3>
+                    <p class="text-gray-600 mb-6">Automatiza tareas documentales: revisa contratos, genera resúmenes y gestiona emails inteligentemente</p>
+                    
+                    <div class="space-y-3 mb-6 text-left">
+                        <div class="flex items-center">
+                            <i class="fas fa-file-contract text-blue-500 mr-3"></i>
+                            <span class="text-sm">Revisión de Documentos</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-red-500 mr-3"></i>
+                            <span class="text-sm">Gestión de Emails</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clipboard-list text-green-500 mr-3"></i>
+                            <span class="text-sm">Resúmenes Automáticos</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-search text-purple-500 mr-3"></i>
+                            <span class="text-sm">Análisis de Contenido</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank" class="btn-primary text-white px-6 py-3 rounded-full font-semibold inline-flex items-center w-full justify-center">
+                        <i class="fas fa-arrow-right mr-2"></i>
+                        Implementar Agentes
+                    </a>
+                </div>
+                
+                <!-- Agentes de Voz -->
+                <div class="product-card rounded-2xl p-8 text-center hover-scale">
+                    <div class="service-icon w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-phone text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 gradient-text">Agentes de Voz</h3>
+                    <p class="text-gray-600 mb-6">IA que realiza y recibe llamadas automáticamente con voz natural para prospección y atención al cliente</p>
+                    
+                    <div class="space-y-3 mb-6 text-left">
+                        <div class="flex items-center">
+                            <i class="fas fa-phone-alt text-green-500 mr-3"></i>
+                            <span class="text-sm">Llamadas Outbound</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-headset text-blue-500 mr-3"></i>
+                            <span class="text-sm">Atención Inbound</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-microphone text-red-500 mr-3"></i>
+                            <span class="text-sm">Voz Natural Humana</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-chart-line text-purple-500 mr-3"></i>
+                            <span class="text-sm">Prospección Masiva</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank" class="btn-primary text-white px-6 py-3 rounded-full font-semibold inline-flex items-center w-full justify-center">
+                        <i class="fas fa-arrow-right mr-2"></i>
+                        Implementar Voz IA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ejemplos Detallados -->
+    <section id="ejemplos" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Ejemplos <span class="gradient-text">Casos de Uso Reales</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Ve cómo nuestros 3 productos transforman operaciones reales en diferentes industrias</p>
+            </div>
+            
+            <!-- SmartLeads Ejemplos -->
+            <div class="mb-16">
+                <h3 class="text-3xl font-bold text-center mb-8 gradient-text">SmartLeads en Acción</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="feature-highlight rounded-xl p-6">
+                        <h4 class="text-xl font-bold mb-3 flex items-center">
+                            <i class="fas fa-home text-blue-600 mr-3"></i>
+                            Inmobiliaria Premium
+                        </h4>
+                        <p class="text-gray-700 mb-4"><strong>Situación:</strong> 200+ leads diarios por WhatsApp, muchos perdidos por respuesta tardía</p>
+                        <p class="text-gray-700 mb-4"><strong>Solución IA:</strong></p>
+                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                            <li>• "¡Hola! Vi que te interesa el apartamento en Polanco. ¿Cuándo podrías visitarlo?"</li>
+                            <li>• Califica automáticamente: presupuesto, urgencia, ubicación preferida</li>
+                            <li>• Agenda visitas directamente: "Perfecto, te reservo mañana a las 3pm"</li>
+                        </ul>
+                        <p class="text-green-600 font-bold">Resultado: 85% más conversiones, 0 leads perdidos</p>
+                    </div>
+                    
+                    <div class="feature-highlight rounded-xl p-6">
+                        <h4 class="text-xl font-bold mb-3 flex items-center">
+                            <i class="fas fa-dumbbell text-red-600 mr-3"></i>
+                            Cadena de Gimnasios
+                        </h4>
+                        <p class="text-gray-700 mb-4"><strong>Situación:</strong> Consultas en Instagram sobre membresías, horarios y clases</p>
+                        <p class="text-gray-700 mb-4"><strong>Solución IA:</strong></p>
+                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                            <li>• "¡Hola! Te ayudo con la membresía. ¿Buscas gym cerca de tu trabajo o casa?"</li>
+                            <li>• Envía horarios de clases automáticamente</li>
+                            <li>• Agenda clase de prueba gratuita</li>
+                        </ul>
+                        <p class="text-green-600 font-bold">Resultado: 150% más inscripciones desde redes sociales</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Agentes Inteligentes Ejemplos -->
+            <div class="mb-16">
+                <h3 class="text-3xl font-bold text-center mb-8 gradient-text">Agentes Inteligentes en Acción</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="feature-highlight rounded-xl p-6">
+                        <h4 class="text-xl font-bold mb-3 flex items-center">
+                            <i class="fas fa-gavel text-purple-600 mr-3"></i>
+                            Bufete de Abogados
+                        </h4>
+                        <p class="text-gray-700 mb-4"><strong>Situación:</strong> 50+ contratos semanales para revisar, proceso manual de 2 horas cada uno</p>
+                        <p class="text-gray-700 mb-4"><strong>Solución IA:</strong></p>
+                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                            <li>• Revisa contratos automáticamente en 5 minutos</li>
+                            <li>• Identifica cláusulas problemáticas y riesgos</li>
+                            <li>• Genera resumen ejecutivo para abogados</li>
+                            <li>• Envía email con observaciones al cliente</li>
+                        </ul>
+                        <p class="text-green-600 font-bold">Resultado: 90% menos tiempo, 300% más contratos procesados</p>
+                    </div>
+                    
+                    <div class="feature-highlight rounded-xl p-6">
+                        <h4 class="text-xl font-bold mb-3 flex items-center">
+                            <i class="fas fa-hospital text-green-600 mr-3"></i>
+                            Hospital Privado
+                        </h4>
+                        <p class="text-gray-700 mb-4"><strong>Situación:</strong> Cientos de emails diarios, informes médicos por resumir</p>
+                        <p class="text-gray-700 mb-4"><strong>Solución IA:</strong></p>
+                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                            <li>• Clasifica emails por urgencia y departamento</li>
+                            <li>• Resume historiales médicos largos</li>
+                            <li>• Extrae información clave para doctores</li>
+                            <li>• Responde consultas administrativas básicas</li>
+                        </ul>
+                        <p class="text-green-600 font-bold">Resultado: 70% menos carga administrativa, mejor atención</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Agentes de Voz Ejemplos -->
+            <div class="mb-8">
+                <h3 class="text-3xl font-bold text-center mb-8 gradient-text">Agentes de Voz en Acción</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="feature-highlight rounded-xl p-6">
+                        <h4 class="text-xl font-bold mb-3 flex items-center">
+                            <i class="fas fa-phone-alt text-blue-600 mr-3"></i>
+                            Llamadas Outbound - Seguros
+                        </h4>
+                        <p class="text-gray-700 mb-4"><strong>Situación:</strong> 1000+ leads diarios para contactar, equipo humano limitado</p>
+                        <p class="text-gray-700 mb-4"><strong>Solución IA:</strong></p>
+                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                            <li>• "Buenos días, habla Ana de Seguros Protección. ¿Tienes un minuto?"</li>
+                            <li>• Califica interés en seguros de auto/vida/hogar</li>
+                            <li>• Agenda cita con agente humano si hay interés</li>
+                            <li>• Maneja objeciones comunes naturalmente</li>
+                        </ul>
+                        <p class="text-green-600 font-bold">Resultado: 500% más contactos, 40% conversión a citas</p>
+                    </div>
+                    
+                    <div class="feature-highlight rounded-xl p-6">
+                        <h4 class="text-xl font-bold mb-3 flex items-center">
+                            <i class="fas fa-headset text-green-600 mr-3"></i>
+                            Llamadas Inbound - E-commerce
+                        </h4>
+                        <p class="text-gray-700 mb-4"><strong>Situación:</strong> Atención al cliente 24/7, consultas repetitivas sobre pedidos</p>
+                        <p class="text-gray-700 mb-4"><strong>Solución IA:</strong></p>
+                        <ul class="text-sm text-gray-600 space-y-1 mb-4">
+                            <li>• "Hola, soy Carmen de atención al cliente. ¿En qué puedo ayudarte?"</li>
+                            <li>• Consulta estado de pedidos automáticamente</li>
+                            <li>• Resuelve problemas de facturación</li>
+                            <li>• Transfiere a humano solo casos complejos</li>
+                        </ul>
+                        <p class="text-green-600 font-bold">Resultado: 80% consultas resueltas automáticamente, 24/7</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industrias Section -->
+    <section id="industrias" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Impacto Comprobado en <span class="gradient-text">Diversas Industrias</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Nuestros 3 productos se adaptan a las necesidades específicas de cada sector</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover bg-white rounded-xl p-8 border-2 border-gray-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-home text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Bienes Raíces</h3>
+                    <div class="space-y-2 text-sm">
+                        <p><strong>SmartLeads:</strong> Califica leads y agenda visitas</p>
+                        <p><strong>Agentes IA:</strong> Revisa contratos de compraventa</p>
+                        <p><strong>Voz IA:</strong> Prospección masiva de propietarios</p>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-xl p-8 border-2 border-gray-100">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-user-md text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Salud y Medicina</h3>
+                    <div class="space-y-2 text-sm">
+                        <p><strong>SmartLeads:</strong> Agenda citas médicas 24/7</p>
+                        <p><strong>Agentes IA:</strong> Resume historiales clínicos</p>
+                        <p><strong>Voz IA:</strong> Recordatorios de citas automáticos</p>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-xl p-8 border-2 border-gray-100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-graduation-cap text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Educación</h3>
+                    <div class="space-y-2 text-sm">
+                        <p><strong>SmartLeads:</strong> Info de cursos e inscripciones</p>
+                        <p><strong>Agentes IA:</strong> Corrige exámenes y ensayos</p>
+                        <p><strong>Voz IA:</strong> Seguimiento a estudiantes</p>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-xl p-8 border-2 border-gray-100">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Seguros</h3>
+                    <div class="space-y-2 text-sm">
+                        <p><strong>SmartLeads:</strong> Cotizaciones automáticas</p>
+                        <p><strong>Agentes IA:</strong> Procesa reclamos y pólizas</p>
+                        <p><strong>Voz IA:</strong> Prospección de nuevos clientes</p>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-xl p-8 border-2 border-gray-100">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-gavel text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Legal</h3>
+                    <div class="space-y-2 text-sm">
+                        <p><strong>SmartLeads:</strong> Consultas legales iniciales</p>
+                        <p><strong>Agentes IA:</strong> Análisis de contratos</p>
+                        <p><strong>Voz IA:</strong> Seguimiento de casos</p>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-xl p-8 border-2 border-gray-100">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-store text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">E-commerce</h3>
+                    <div class="space-y-2 text-sm">
+                        <p><strong>SmartLeads:</strong> Soporte de ventas 24/7</p>
+                        <p><strong>Agentes IA:</strong> Gestión de inventario</p>
+                        <p><strong>Voz IA:</strong> Atención telefónica completa</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center hover-scale">
+                    <i class="fas fa-cog mr-2"></i>
+                    Diseña tu Suite IA a Medida
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios Section -->
+    <section id="testimonios" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Lo que dicen nuestros <span class="gradient-text">Clientes</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Casos reales de éxito con nuestros 3 productos implementados</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"La suite completa transformó nuestra operación. SmartLeads duplicó las ventas, los Agentes IA procesan contratos en minutos, y la Voz IA contacta 500+ leads diarios. ROI del 400%."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            MC
+                        </div>
+                        <div>
+                            <div class="font-bold">María Carmen</div>
+                            <div class="text-sm text-gray-500">CEO - Inmobiliaria Premium</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"Los Agentes Inteligentes revolucionaron nuestro bufete. Revisamos 100+ contratos semanales automáticamente. El tiempo que ahorramos lo invertimos en casos más complejos."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            JR
+                        </div>
+                        <div>
+                            <div class="font-bold">José Rodríguez</div>
+                            <div class="text-sm text-gray-500">Socio - Bufete Rodríguez & Asociados</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"Los Agentes de Voz son increíbles. Suenan completamente humanos y manejan el 80% de nuestras llamadas inbound. Atención 24/7 real sin contratar más personal."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-400 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            AS
+                        </div>
+                        <div>
+                            <div class="font-bold">Ana Silva</div>
+                            <div class="text-sm text-gray-500">Directora - TechSupport Pro</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4"><span class="gradient-text">Preguntas</span> Frecuentes</h2>
+                <p class="text-xl text-gray-600">Resolvemos todas tus dudas sobre nuestros 3 productos de IA</p>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="faq-item">
+                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 rounded-lg flex justify-between items-center transition-colors">
+                        <span class="font-semibold text-lg">¿Puedo implementar solo uno de los productos o necesito los 3?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform"></i>
+                    </button>
+                    <div class="faq-content p-6 bg-white">
+                        <p class="text-gray-600">Puedes implementar cualquier producto individualmente. Muchos clientes empiezan con SmartLeads y luego agregan los otros. Ofrecemos descuentos progresivos por implementar múltiples productos.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 rounded-lg flex justify-between items-center transition-colors">
+                        <span class="font-semibold text-lg">¿Los Agentes de Voz realmente suenan humanos?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform"></i>
+                    </button>
+                    <div class="faq-content p-6 bg-white">
+                        <p class="text-gray-600">Sí, utilizamos la tecnología de síntesis de voz más avanzada. Los agentes tienen entonación natural, pausas apropiadas y pueden manejar interrupciones. El 95% de las personas no detectan que es IA.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 rounded-lg flex justify-between items-center transition-colors">
+                        <span class="font-semibold text-lg">¿Qué tipos de documentos pueden procesar los Agentes Inteligentes?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform"></i>
+                    </button>
+                    <div class="faq-content p-6 bg-white">
+                        <p class="text-gray-600">Procesan PDFs, Word, Excel, emails, contratos, facturas, informes médicos, documentos legales, propuestas comerciales y más. Pueden extraer información específica, generar resúmenes y identificar patrones o anomalías.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 rounded-lg flex justify-between items-center transition-colors">
+                        <span class="font-semibold text-lg">¿Cómo se integran los 3 productos entre sí?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform"></i>
+                    </button>
+                    <div class="faq-content p-6 bg-white">
+                        <p class="text-gray-600">Funcionan de manera integrada: SmartLeads califica un lead, los Agentes Inteligentes procesan su documentación automáticamente, y los Agentes de Voz hacen seguimiento telefónico. Todo sincronizado en tu CRM.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 rounded-lg flex justify-between items-center transition-colors">
+                        <span class="font-semibold text-lg">¿Cuánto tiempo toma implementar los 3 productos?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform"></i>
+                    </button>
+                    <div class="faq-content p-6 bg-white">
+                        <p class="text-gray-600">SmartLeads: 3-7 días. Agentes Inteligentes: 5-10 días. Agentes de Voz: 7-14 días. Si implementas los 3 juntos, el proceso total es de 2-3 semanas con implementación escalonada.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 rounded-lg flex justify-between items-center transition-colors">
+                        <span class="font-semibold text-lg">¿Hay límites en el volumen de procesamiento?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transform transition-transform"></i>
+                    </button>
+                    <div class="faq-content p-6 bg-white">
+                        <p class="text-gray-600">No hay límites fijos. SmartLeads maneja miles de conversaciones simultáneas, los Agentes Inteligentes procesan cientos de documentos por hora, y los Agentes de Voz pueden realizar llamadas masivas. Todo escalable según tu negocio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Listo para transformar tu <span class="gradient-text">OPERACIÓN COMPLETA</span> con IA?</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Agenda tu consulta gratuita y descubre cómo nuestros 3 productos pueden revolucionar tu negocio en 30 días</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Formulario de Contacto -->
+                <div class="bg-gray-800 rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-6">Consulta Gratuita</h3>
+                    <form class="space-y-6" id="contact-form">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Nombre</label>
+                                <input type="text" name="nombre" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white" placeholder="Tu nombre">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Empresa</label>
+                                <input type="text" name="empresa" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white" placeholder="Nombre de tu empresa">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Email</label>
+                                <input type="email" name="email" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white" placeholder="tu@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Teléfono</label>
+                                <input type="tel" name="telefono" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white" placeholder="+1234567890">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">¿Qué productos te interesan?</label>
+                            <div class="grid grid-cols-1 gap-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="productos[]" value="smartleads" class="mr-2">
+                                    <span>SmartLeads (Chat IA para WhatsApp/Instagram/Messenger)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="productos[]" value="agentes-inteligentes" class="mr-2">
+                                    <span>Agentes Inteligentes (Documentos y Emails)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="productos[]" value="agentes-voz" class="mr-2">
+                                    <span>Agentes de Voz (Llamadas Outbound/Inbound)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="productos[]" value="suite-completa" class="mr-2">
+                                    <span>Suite Completa (Los 3 productos integrados)</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Industria</label>
+                            <select name="industria" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white">
+                                <option value="">Selecciona tu industria</option>
+                                <option value="bienes-raices">Bienes Raíces</option>
+                                <option value="salud-medicina">Salud y Medicina</option>
+                                <option value="educacion">Educación</option>
+                                <option value="seguros">Seguros</option>
+                                <option value="legal">Legal</option>
+                                <option value="ecommerce">E-commerce</option>
+                                <option value="servicios">Servicios Profesionales</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">¿Cómo podemos ayudarte?</label>
+                            <textarea name="mensaje" rows="4" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white" placeholder="Cuéntanos sobre tu negocio y qué resultados buscas..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full btn-primary text-white px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center justify-center">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Solicitar Consulta Gratuita
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Información de Contacto y CTA -->
+                <div>
+                    <div class="space-y-8">
+                        <div class="text-center">
+                            <a href="https://launchpad.aizentek.com/widget/bookings/aizentek" target="_blank" class="btn-primary text-white px-8 py-4 rounded-full font-semibold text-xl inline-flex items-center hover-scale">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                Agenda tu Consulta Ahora
+                            </a>
+                            <p class="text-gray-400 mt-4">Respuesta garantizada en menos de 2 horas</p>
+                        </div>
+                        
+                        <div class="bg-gray-800 rounded-xl p-6">
+                            <h4 class="font-bold text-lg mb-4">¿Por qué elegir AiZentek?</h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-400 mr-3"></i>
+                                    Suite completa de IA empresarial
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-400 mr-3"></i>
+                                    ROI comprobado del 400% promedio
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-400 mr-3"></i>
+                                    Implementación en 2-3 semanas
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-400 mr-3"></i>
+                                    Soporte técnico 24/7 en español
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-400 mr-3"></i>
+                                    Integración sin cambiar tu flujo actual
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        
+                        <div class="text-center">
+                            <h4 class="font-bold text-lg mb-4">¿Prefieres hablar directamente?</h4>
+                            <div class="space-y-3">
+                                <a href="tel:+1234567890" class="btn-secondary px-6 py-3 rounded-full font-semibold inline-flex items-center">
+                                    <i class="fas fa-phone mr-2"></i>
+                                    Llamar Ahora
+                                </a>
+                                <br>
+                                <a href="https://wa.me/1234567890" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-semibold inline-flex items-center transition-colors">
+                                    <i class="fab fa-whatsapp mr-2"></i>
+                                    WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold gradient-text mb-4">AiZentek</div>
+                    <p class="text-gray-400 mb-4">Suite completa de IA empresarial: Chat, Documentos y Voz en una sola plataforma.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/aizentek/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/aizentek/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@aizentek?is_from_webapp=1&sender_device=pc" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-tiktok text-xl"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61577021385752" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">Productos</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#productos" class="hover:text-white transition-colors">SmartLeads</a></li>
+                        <li><a href="#productos" class="hover:text-white transition-colors">Agentes Inteligentes</a></li>
+                        <li><a href="#productos" class="hover:text-white transition-colors">Agentes de Voz</a></li>
+                        <li><a href="#productos" class="hover:text-white transition-colors">Suite Completa</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">Industrias</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#industrias" class="hover:text-white transition-colors">Bienes Raíces</a></li>
+                        <li><a href="#industrias" class="hover:text-white transition-colors">Salud y Medicina</a></li>
+                        <li><a href="#industrias" class="hover:text-white transition-colors">Educación</a></li>
+                        <li><a href="#industrias" class="hover:text-white transition-colors">Legal</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">Contacto</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#contacto" class="hover:text-white transition-colors">Consulta Gratuita</a></li>
+                        <li><a href="mailto:contacto@aizentek.com" class="hover:text-white transition-colors">Email</a></li>
+                        <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#testimonios" class="hover:text-white transition-colors">Testimonios</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 AiZentek. Todos los derechos reservados. | Suite Completa de IA Empresarial</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Navbar Background Change on Scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.remove('bg-white');
+                navbar.classList.add('bg-white');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+
+        // Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('[data-target]');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const count = +counter.innerText;
+                const increment = target / 100;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(() => animateCounters(), 20);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+
+        // Trigger counter animation when in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.querySelectorAll('[data-target]').forEach(counter => {
+            observer.observe(counter);
+        });
+
+        // FAQ Functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-content').forEach(item => {
+                    if (item !== content) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                document.querySelectorAll('.faq-question i').forEach(i => {
+                    if (i !== icon) {
+                        i.classList.remove('rotate-180');
+                    }
+                });
+                
+                // Toggle current FAQ item
+                content.classList.toggle('active');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Contact Form Handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Enviando...';
+            submitBtn.disabled = true;
+            
+            // Simulate form submission (replace with actual endpoint)
+            setTimeout(() => {
+                alert('¡Gracias por tu consulta! Te contactaremos en las próximas 2 horas para discutir tu suite de IA personalizada.');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Redirect to booking page
+                window.open('https://launchpad.aizentek.com/widget/bookings/aizentek', '_blank');
+            }, 2000);
+        });
+
+        // Add animation classes when elements come into view
+        const animateOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        });
+
+        document.querySelectorAll('.card-hover, .hover-scale, .product-card').forEach(el => {
+            animateOnScroll.observe(el);
+        });
+
+        // Button Click Analytics (you can replace with your analytics code)
+        document.querySelectorAll('a[href*="launchpad.aizentek.com"]').forEach(button => {
+            button.addEventListener('click', () => {
+                console.log('CTA Button clicked:', button.textContent);
+                // Add your analytics tracking here
+            });
+        });
+
+        // Service Icon Animation
+        document.querySelectorAll('.service-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                icon.style.animationDuration = '0.5s';
+            });
+            icon.addEventListener('mouseleave', () => {
+                icon.style.animationDuration = '3s';
+            });
+        });
+    </script>
+   <!-- 1) Parche: forzar todos los shadow roots a 'open' y ocultar solo el branding -->
+<script>
+(function () {
+  // --- utilidades ---
+  function hideBrandingIn(root) {
+    try {
+      // Busca el enlace oficial del crédito
+      root.querySelectorAll('a[href="https://elevenlabs.io/conversational-ai"]').forEach(a => {
+        const p = a.closest('p');
+        if (p) p.style.setProperty('display','none','important');
+      });
+      // Por si cambian el markup: detectar el texto
+      root.querySelectorAll('p').forEach(p => {
+        const t = (p.textContent || '').trim();
+        if (t.includes('Powered by ElevenLabs')) {
+          p.style.setProperty('display','none','important');
+        }
+      });
+    } catch (e) {}
+  }
+  function observeRoot(root) {
+    hideBrandingIn(root);
+    const mo = new MutationObserver(() => hideBrandingIn(root));
+    mo.observe(root, { childList: true, subtree: true });
+  }
+  // --- parche de attachShadow: convertir 'closed' en 'open' ---
+  const _attach = Element.prototype.attachShadow;
+  if (_attach) {
+    Element.prototype.attachShadow = function(init) {
+      const patched = Object.assign({}, init || {}, { mode: 'open' });
+      const shadow = _attach.call(this, patched);
+      observeRoot(shadow);
+      return shadow;
+    };
+  }
+  // observar también el documento principal
+  observeRoot(document);
+})();
+</script>
+<elevenlabs-convai agent-id="agent_7901k3m3eh0sf5eaypvzvpa9zpjn"></elevenlabs-convai><script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+</body>
+</html>
